@@ -22,14 +22,17 @@ public class PedidoController {
     private final CargarPedidosUseCase cargarPedidosUseCase;
 
     @PostMapping(value = "/cargar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ResumenCarga> cargarPedidos(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ResumenCarga> cargarPedidos(
+        @RequestParam("file") MultipartFile file,
+        @RequestHeader("idempotency-Key") String idempotencyKey)
+        {
 
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
 
         try {
-            ResumenCarga resumen = cargarPedidosUseCase.procesarArchivo(file.getInputStream());
+            ResumenCarga resumen = cargarPedidosUseCase.procesarArchivo(file.getInputStream(), idempotencyKey);
             return ResponseEntity.ok(resumen);
 
         } catch (IOException e) {

@@ -12,7 +12,7 @@ CREATE TABLE cargas_idempotencia(
     id UUID PRIMARY KEY,
     idempotency_key VARCHAR(255) NOT NULL,
     archivo_hash VARCHAR(255) NOT NULL,
-    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT uk_idempotencia_hash UNIQUE (idempotency_key, archivo_hash)
 );
 
