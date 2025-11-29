@@ -1,0 +1,4 @@
+numeroPedido,clienteId,fechaEntrega,estado,zonaEntrega,requiereRefrigeracion
+P001,CLI-123,2025-12-01,PENDIENTE,ZONA1,true
+P002,CLI-999,2025-12-02,ENTREGADO,ZONA5,false
+P003,CLI-XXX,2020-01-01,PENDIENTE,ZONA1,false
